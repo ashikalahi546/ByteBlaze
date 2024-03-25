@@ -2,38 +2,39 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navber = () => {
-    const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState("light");
 
-    useEffect(()=>{
-        localStorage.setItem('theme',theme)
-        const localTheme = localStorage.getItem('theme')
-        document.querySelector('html').setAttribute('data-theme',localTheme)
-    },[theme])
-    const handleToggle = (e)=>{
-if(e.target.checked){
-    setTheme('synthwave')
-   
-
-}else{
-    setTheme('light')
-}
-
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    const localTheme = localStorage.getItem("theme");
+    document.querySelector("html").setAttribute("data-theme", localTheme);
+  }, [theme]);
+  const handleToggle = (e) => {
+    if (e.target.checked) {
+      setTheme("synthwave");
+    } else {
+      setTheme("light");
     }
+  };
+
+
+
   return (
-    <div className="navbar bg-base-100 shadow fixed px-7">
+    <div className="navbar bg-base-100 shadow fixed px-7 h-16 z-20">
       <div className="flex-1">
-        <a className="btn btn-ghost gap-0 text-2xl text-secondary">
+        <NavLink to = '/' className="btn btn-ghost gap-0 text-2xl text-secondary">
           Byte<span className="text-primary">Blaze</span>
-        </a>
+        </NavLink>
       </div>
       <div className="flex-none">
         <ul className="menu menu-horizontal px-2 font-bold flex  items-center gap-5 ">
-        <NavLink>Home</NavLink>
-        <NavLink>Blogs</NavLink>
-        <NavLink>Bookmarks</NavLink>
-          
+          <NavLink to='/' className={({isActive}) => isActive ? 'text-primary': '' }>Home</NavLink>
+          <NavLink to='/blogs' className={({isActive}) => isActive ? 'text-primary': '' }>Blogs</NavLink>
+          <NavLink to='/bookmarks' className={({isActive}) => isActive ? 'text-primary': '' }>Bookmarks</NavLink>
+
           <label className="cursor-pointer grid place-items-center">
-            <input onChange={handleToggle}
+            <input
+              onChange={handleToggle}
               type="checkbox"
               value="synthwave"
               className="toggle theme-controller bg-base-content row-start-1 col-start-1 col-span-2"

@@ -5,9 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    themes: ["light", "synthwave"],
+    extend: {},
   },
   plugins: [require("daisyui")],
+  daisyui: {
+    themes: ["light", "synthwave"],
+  },
 
 }
 

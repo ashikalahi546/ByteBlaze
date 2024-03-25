@@ -6,9 +6,13 @@ import Navber from "./Navber";
 const Root = () => {
     return (
         <div>
-            <Navber></Navber>
+         <div className="h-16">
+         <Navber></Navber>
+         </div> 
 
-            <Outlet></Outlet>
+       <div className="min-h-[calc(100vh-116px)]">
+       <Outlet></Outlet>
+       </div>
             <Footer></Footer>
         </div>
     );
